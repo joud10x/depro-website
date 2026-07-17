@@ -1,0 +1,9 @@
+{
+  "name": "depro-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Depro cellulite device landing page",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
