@@ -27,6 +27,21 @@
   .qty-btn:hover{background:rgba(255,255,255,.10);}
   .cta-buy:hover{filter:brightness(1.03);}
   .cta-buy:active{transform:translateY(1px);}
+  .depro-gallery-track{cursor:grab;}
+  .depro-gallery-track:active{cursor:grabbing;}
+  .depro-gallery-prev,.depro-gallery-next{transition:opacity .2s ease,background .2s ease;}
+  .depro-gallery-prev:hover,.depro-gallery-next:hover{background:#fff!important;}
+  .hero-mobile .depro-gallery-prev,.hero-mobile .depro-gallery-next{display:none!important;}
+  @media (max-width:640px){
+    .depro-gallery-prev,.depro-gallery-next{display:none!important;}
+  }
+  .wa-float{position:fixed;left:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;z-index:60;box-shadow:0 6px 18px rgba(37,211,102,.45),0 2px 8px rgba(0,0,0,.18);opacity:0;pointer-events:none;transform:scale(.85);transition:opacity .25s ease,transform .18s ease,box-shadow .18s ease;}
+  .wa-float.is-visible{opacity:1;pointer-events:auto;transform:scale(1);}
+  .wa-float.is-visible:hover{transform:scale(1.08);box-shadow:0 8px 24px rgba(37,211,102,.55),0 3px 10px rgba(0,0,0,.2);}
+  .wa-float.is-visible:active{transform:scale(.92);}
+  @media (max-width:640px){
+    .wa-float{width:52px;height:52px;left:14px;bottom:16px;}
+  }
 </style>
 
 <script>
@@ -62,19 +77,39 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
 </div>
 
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/966558848431" target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="تواصل معنا عبر واتساب" onclick="window.va && window.va('event', { name: 'whatsapp_click' });">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.98.579 3.827 1.578 5.383L2 22l4.744-1.548A9.955 9.955 0 0012.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.2a8.174 8.174 0 01-4.166-1.14l-.298-.177-3.088 1.008 1.02-3.02-.194-.31A8.15 8.15 0 013.8 12c0-4.529 3.673-8.2 8.201-8.2 4.529 0 8.199 3.671 8.199 8.2 0 4.528-3.67 8.2-8.199 8.2z"/></svg>
+</a>
+
 <div style="direction:rtl;text-align:right;background:#efe6e2;color:#322a30;min-height:100vh;overflow-x:hidden;" dir="rtl" lang="ar">
 
   <!-- ============ HERO (desktop) ============ -->
   <section class="hero-desktop" style="max-width:1180px;margin:0 auto;padding:100px 24px 60px;display:flex;align-items:center;gap:64px;flex-wrap:wrap;">
     <div style="flex:1 1 380px;min-width:300px;position:relative;">
       <div style="position:absolute;top:-40px;left:-40px;width:260px;height:260px;border-radius:50%;background:#efe3e6;opacity:.7;z-index:0;"></div>
-      <div style="position:relative;aspect-ratio:1/1.05;border-radius:28px;overflow:hidden;background:#efe6e2;z-index:1;">
-        <img src="assets/product-hero-3.webp" width="1400" height="1409" alt="جهاز Depro أثناء الاستخدام" fetchpriority="high" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block;">
+      <div class="depro-gallery" style="position:relative;aspect-ratio:1/1.05;border-radius:28px;overflow:hidden;background:#efe6e2;z-index:1;direction:ltr;">
+        <div class="depro-gallery-track" style="display:flex;width:200%;height:100%;transition:transform .35s ease;touch-action:pan-y;">
+          <div class="depro-gallery-slide" style="position:relative;width:50%;height:100%;flex-shrink:0;">
+            <img src="assets/product-hero-3.webp" width="1400" height="1409" alt="جهاز Depro أثناء الاستخدام" fetchpriority="high" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;bottom:18px;right:18px;background:#f4d9c9;color:#8a4a26;font-weight:800;font-size:13px;padding:9px 18px;border-radius:100px;z-index:2;box-shadow:0 10px 24px rgba(138,74,38,.25);">
+              تصميم جديد بنفس الفعالية
+            </div>
+          </div>
+          <div class="depro-gallery-slide" style="width:50%;height:100%;flex-shrink:0;">
+            <img src="assets/ai-image-generator-1784688145588.png" width="2048" height="2048" alt="أزرار التحكم في جهاز Depro: تشغيل، زيادة الشفط، تقليل الشفط، تحرير الشفط، تسخين" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+
+        <button type="button" class="depro-gallery-prev" aria-label="الصورة السابقة" style="position:absolute;top:50%;left:14px;transform:translateY(-50%);width:34px;height:34px;border:none;border-radius:50%;background:rgba(255,255,255,.85);color:#463743;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:3;display:flex;align-items:center;justify-content:center;">‹</button>
+        <button type="button" class="depro-gallery-next" aria-label="الصورة التالية" style="position:absolute;top:50%;right:14px;transform:translateY(-50%);width:34px;height:34px;border:none;border-radius:50%;background:rgba(255,255,255,.85);color:#463743;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:3;display:flex;align-items:center;justify-content:center;">›</button>
+
+        <div class="depro-gallery-dots" style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:3;">
+          <button type="button" class="depro-gallery-dot" aria-label="عرض الصورة 1" style="width:8px;height:8px;padding:0;border:none;border-radius:50%;background:#463743;cursor:pointer;"></button>
+          <button type="button" class="depro-gallery-dot" aria-label="عرض الصورة 2" style="width:8px;height:8px;padding:0;border:none;border-radius:50%;background:rgba(70,55,66,.3);cursor:pointer;"></button>
+        </div>
       </div>
-      <div style="position:absolute;bottom:70px;right:18px;background:#f4d9c9;color:#8a4a26;font-weight:800;font-size:13px;padding:9px 18px;border-radius:100px;z-index:2;box-shadow:0 10px 24px rgba(138,74,38,.25);">
-        تصميم جديد بنفس الفعالية
-      </div>
-      <div style="position:absolute;bottom:18px;right:18px;background:#463743;color:#f4f1e8;font-weight:800;font-size:14px;padding:10px 18px;border-radius:100px;z-index:2;box-shadow:0 10px 24px rgba(70,55,66,.3);animation:ctaPulse 1.8s ease-in-out infinite;">
+      <div style="position:absolute;top:18px;left:18px;background:#463743;color:#f4f1e8;font-weight:800;font-size:14px;padding:10px 18px;border-radius:100px;z-index:2;box-shadow:0 10px 24px rgba(70,55,66,.3);animation:ctaPulse 1.8s ease-in-out infinite;">
         الكمية على وشك النفاذ
       </div>
     </div>
@@ -116,7 +151,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       </div>
 
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px;">
-        <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" onclick="window.va && window.va('event', { name: 'buy_now_click' });" style="background:#463743;color:#f4f1e8;font-weight:800;font-size:17px;padding:18px 38px;border-radius:100px;box-shadow:0 10px 30px rgba(70,55,66,.28);animation:pulseRing 2.4s infinite;">
+        <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('InitiateCheckout', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="background:#463743;color:#f4f1e8;font-weight:800;font-size:17px;padding:18px 38px;border-radius:100px;box-shadow:0 10px 30px rgba(70,55,66,.28);animation:pulseRing 2.4s infinite;">
           اطلبيه الآن ويوصلك خلال 4 أيام ←
         </a>
         <div style="display:flex;align-items:center;gap:8px;color:#6f5768;font-weight:700;font-size:14px;">
@@ -139,10 +174,22 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
   <!-- ============ HERO (mobile) ============ -->
   <section class="hero-mobile" style="padding-top:48px;background:#efe5e1;font-family:'IBM Plex Sans Arabic',sans-serif;">
-    <div style="position:relative;height:340px;background:#d9ccc8;">
-      <img src="assets/product-hero-3.webp" width="1400" height="1409" alt="جهاز Depro أثناء الاستخدام" fetchpriority="high" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div style="position:absolute;bottom:14px;right:14px;background:#f4d9c9;color:#8a4a26;font-weight:800;font-size:11.5px;padding:7px 14px;border-radius:100px;box-shadow:0 8px 18px rgba(138,74,38,.25);">
-        تصميم جديد بنفس الفعالية
+    <div class="depro-gallery" style="position:relative;height:340px;background:#d9ccc8;direction:ltr;">
+      <div class="depro-gallery-track" style="display:flex;width:200%;height:100%;transition:transform .35s ease;touch-action:pan-y;">
+        <div class="depro-gallery-slide" style="position:relative;width:50%;height:100%;flex-shrink:0;">
+          <img src="assets/product-hero-3.webp" width="1400" height="1409" alt="جهاز Depro أثناء الاستخدام" fetchpriority="high" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div style="position:absolute;bottom:14px;right:14px;background:#f4d9c9;color:#8a4a26;font-weight:800;font-size:11.5px;padding:7px 14px;border-radius:100px;box-shadow:0 8px 18px rgba(138,74,38,.25);z-index:2;">
+            تصميم جديد بنفس الفعالية
+          </div>
+        </div>
+        <div class="depro-gallery-slide" style="width:50%;height:100%;flex-shrink:0;">
+          <img src="assets/ai-image-generator-1784688145588.png" width="2048" height="2048" alt="أزرار التحكم في جهاز Depro: تشغيل، زيادة الشفط، تقليل الشفط، تحرير الشفط، تسخين" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </div>
+
+      <div class="depro-gallery-dots" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:3;">
+        <button type="button" class="depro-gallery-dot" aria-label="عرض الصورة 1" style="width:7px;height:7px;padding:0;border:none;border-radius:50%;background:#463743;cursor:pointer;"></button>
+        <button type="button" class="depro-gallery-dot" aria-label="عرض الصورة 2" style="width:7px;height:7px;padding:0;border:none;border-radius:50%;background:rgba(70,55,66,.3);cursor:pointer;"></button>
       </div>
     </div>
 
@@ -186,7 +233,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       </div>
 
       <!-- CTA -->
-      <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' });" style="width:100%;cursor:pointer;background:#463743;border-radius:100px;padding:16px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 12px 26px -10px rgba(62,74,53,.7);animation:ctaPulse 1.8s ease-in-out infinite;">
+      <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('InitiateCheckout', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="width:100%;cursor:pointer;background:#463743;border-radius:100px;padding:16px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 12px 26px -10px rgba(62,74,53,.7);animation:ctaPulse 1.8s ease-in-out infinite;">
         <span style="font-family:'Cairo',sans-serif;font-weight:800;font-size:16.5px;color:#F7F4EA;">اطلبيه الآن ويوصلك خلال 4 أيام</span>
         <span style="color:#F7F4EA;font-size:15px;">←</span>
       </a>
@@ -198,46 +245,57 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </section>
 
   <!-- ============ PROBLEM / AGITATION ============ -->
-  <section style="background:#463743;padding:70px 24px;">
-    <div style="max-width:1000px;margin:0 auto;text-align:center;">
-      <h2 style="color:#f4f1e8;font-size:clamp(24px,3vw,34px);font-weight:800;margin:0 0 16px;">
+  <section style="background:#3f303a;padding:45px 24px;">
+    <div style="max-width:640px;margin:0 auto;">
+      <h2 style="color:#f2ebe1;font-size:clamp(24px,3vw,30px);font-weight:800;margin:0 0 30px;line-height:1.35;text-align:center;">
         ليه السيلوليت صعب يروح بالتمارين والدايت لحاله؟
       </h2>
-      <p style="color:#ddccd3;font-size:16px;line-height:1.9;max-width:640px;margin:0 auto 44px;">
-        لأن السيلوليت مشكلة في طبقة الدهون تحت الجلد — يحتاج تحفيز مباشر للأنسجة العميقة، مو بس حرق سعرات.
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;display:flex;align-items:center;gap:16px;padding:14px;text-align:right;">
-          <div style="width:64px;height:64px;flex-shrink:0;border-radius:12px;overflow:hidden;"><img src="assets/problem-exercise.jpg" alt="تمارين" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-          <div>
-            <div style="color:#f4f1e8;font-weight:700;margin-bottom:4px;font-size:15px;">تمارين ما تكفي</div>
-            <div style="color:#ccbdc5;font-size:13px;line-height:1.6;">تشد العضلات بس ما تفكك تجمعات الدهون تحت الجلد</div>
+
+      <div style="position:relative;">
+        <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:26px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex:none;">
+            <span style="font-size:28px;font-weight:900;color:#a4726f;line-height:1;">٠١</span>
+            <span style="width:2px;flex:1;min-height:38px;background:linear-gradient(#a4726f,rgba(164,114,111,.15));margin-top:8px;"></span>
+          </div>
+          <div style="flex:1;min-width:0;padding-top:3px;">
+            <div style="color:#f2ebe1;font-size:17px;font-weight:800;margin-bottom:5px;">تمارين ما تكفي</div>
+            <div style="color:#a99aa0;font-size:14px;line-height:1.7;">تشدّ العضلات بس ما تفكّك تجمّعات الدهون تحت الجلد.</div>
           </div>
         </div>
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;display:flex;align-items:center;gap:16px;padding:14px;text-align:right;">
-          <div style="width:64px;height:64px;flex-shrink:0;border-radius:12px;overflow:hidden;"><img src="assets/problem-diet.jpg" alt="دايت" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-          <div>
-            <div style="color:#f4f1e8;font-weight:700;margin-bottom:4px;font-size:15px;">الدايت بطيء الأثر</div>
-            <div style="color:#ccbdc5;font-size:13px;line-height:1.6;">يقلل الوزن لكن ما يشد الجلد بمفرده</div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:26px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex:none;">
+            <span style="font-size:28px;font-weight:900;color:#a4726f;line-height:1;">٠٢</span>
+            <span style="width:2px;flex:1;min-height:38px;background:linear-gradient(#a4726f,rgba(164,114,111,.15));margin-top:8px;"></span>
+          </div>
+          <div style="flex:1;min-width:0;padding-top:3px;">
+            <div style="color:#f2ebe1;font-size:17px;font-weight:800;margin-bottom:5px;">الدايت بطيء الأثر</div>
+            <div style="color:#a99aa0;font-size:14px;line-height:1.7;">يقلّل الوزن لكن ما يشدّ الجلد بمفرده.</div>
           </div>
         </div>
-        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;display:flex;align-items:center;gap:16px;padding:14px;text-align:right;">
-          <div style="width:64px;height:64px;flex-shrink:0;border-radius:12px;overflow:hidden;"><img src="assets/problem-cream.jpg" alt="كريمات" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-          <div>
-            <div style="color:#f4f1e8;font-weight:700;margin-bottom:4px;font-size:15px;">الكريمات سطحية</div>
-            <div style="color:#ccbdc5;font-size:13px;line-height:1.6;">تعالج السطح فقط دون تحفيز الدورة الدموية العميقة</div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex:none;">
+            <span style="font-size:28px;font-weight:900;color:#a4726f;line-height:1;">٠٣</span>
+          </div>
+          <div style="flex:1;min-width:0;padding-top:3px;">
+            <div style="color:#f2ebe1;font-size:17px;font-weight:800;margin-bottom:5px;">الكريمات سطحية</div>
+            <div style="color:#a99aa0;font-size:14px;line-height:1.7;">تعالج السطح فقط دون تحفيز الدورة الدموية.</div>
           </div>
         </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-top:30px;background:linear-gradient(90deg,rgba(164,114,111,.18),rgba(164,114,111,.04));border:1px solid rgba(164,114,111,.25);border-radius:16px;padding:16px 18px;">
+        <span style="color:#efe7dd;font-size:14.5px;font-weight:700;line-height:1.7;">الحل: جهاز تحفيز عميق يفكّك تجمّعات الدهون ويشدّ الجلد ويحفّز الدورة الدموية بنفس الوقت.</span>
       </div>
     </div>
   </section>
 
   <!-- ============ BEFORE / AFTER ============ -->
-  <section style="background:#ece0dc;padding:90px 24px 40px;">
+  <section style="background:#ece0dc;padding:45px 24px 40px;">
     <div style="max-width:1180px;margin:0 auto;">
       <div style="text-align:center;margin-bottom:50px;">
-        <span style="color:#6f5768;font-weight:700;font-size:14px;letter-spacing:.5px;">نتائج حقيقية</span>
-        <h2 style="font-size:clamp(26px,3.2vw,38px);font-weight:800;color:#2c2430;margin:10px 0 12px;">قبل وبعد</h2>
+        <h2 style="font-size:clamp(26px,3.2vw,38px);font-weight:800;color:#2c2430;margin:0 0 12px;">قبل وبعد</h2>
         <p style="color:#877884;font-size:15px;max-width:480px;margin:0 auto;">لقطات فعلية أرسلتها عميلات جرّبن الجهاز — بدون فلاتر أو تعديل.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;">
@@ -279,7 +337,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </section>
 
   <!-- ============ HOW IT WORKS ============ -->
-  <section style="max-width:1180px;margin:0 auto;padding:44px 24px 70px;">
+  <section style="max-width:1180px;margin:0 auto;padding:44px 24px 45px;">
     <div style="text-align:center;margin-bottom:32px;">
       <span style="color:#6f5768;font-weight:700;font-size:14px;letter-spacing:.5px;">كيف يعمل Depro</span>
       <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;color:#2c2430;margin:10px 0 0;">تقنيتان في جهاز واحد</h2>
@@ -305,11 +363,10 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </section>
 
   <!-- ============ TESTIMONIALS ============ -->
-  <section style="background:#463743;padding:90px 24px;">
+  <section style="background:#463743;padding:45px 24px;">
     <div style="max-width:1180px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:50px;">
-        <span style="color:#ccbdc5;font-weight:700;font-size:14px;">تجارب حقيقية</span>
-        <h2 style="font-size:clamp(26px,3.2vw,38px);font-weight:800;color:#f4f1e8;margin:10px 0 0;">قالوا عن Depro</h2>
+      <div style="text-align:center;margin-bottom:32px;">
+        <h2 style="font-size:clamp(26px,3.2vw,38px);font-weight:800;color:#f4f1e8;margin:0;">قالوا عن Depro</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;" id="testimonials"></div>
     </div>
@@ -339,47 +396,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     </div>
   </section>
 
-  <!-- ============ FAQ + WARNINGS ============ -->
-  <section style="max-width:900px;margin:0 auto;padding:60px 24px;">
-    <div style="text-align:center;margin-bottom:32px;">
-      <span style="color:#6f5768;font-weight:700;font-size:14px;">أسئلة شائعة</span>
-      <h2 style="font-size:clamp(22px,2.6vw,28px);font-weight:800;color:#2c2430;margin:10px 0 0;">قبل ما تطلبين، جاوبنا على أكثر الأسئلة</h2>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div id="faqList" style="display:contents;"></div>
-
-      <div style="background:#fdf3ea;border:1px solid #e8c9a0;border-radius:16px;overflow:hidden;">
-        <button onclick="toggleWarnings()" style="width:100%;background:transparent;border:none;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:inherit;text-align:right;">
-          <span style="font-weight:800;font-size:15px;color:#8a3b2a;">تحذيرات الاستخدام المهمة — اقرئيها قبل الطلب</span>
-          <span id="warningsArrow" style="font-size:18px;color:#8a3b2a;transform:rotate(0deg);transition:transform .25s;flex-shrink:0;">˅</span>
-        </button>
-        <div id="warningsBody" style="display:none;padding:0 22px 22px;gap:30px;flex-wrap:wrap;">
-          <div style="flex:1;min-width:220px;">
-            <div style="font-weight:700;color:#8a3b2a;margin-bottom:10px;">ممنوع استخدامه على:</div>
-            <ul style="margin:0;padding-inline-start:20px;color:#675b64;font-size:14px;line-height:2;">
-              <li>منطقة القلب والصدر</li>
-              <li>الرقبة والغدة الدرقية</li>
-              <li>العمود الفقري والعظام البارزة</li>
-              <li>الوجه</li>
-              <li>الجروح والالتهابات والدوالي</li>
-            </ul>
-          </div>
-          <div style="flex:1;min-width:220px;">
-            <div style="font-weight:700;color:#8a3b2a;margin-bottom:10px;">ممنوع استخدامه من قبل:</div>
-            <ul style="margin:0;padding-inline-start:20px;color:#675b64;font-size:14px;line-height:2;">
-              <li>الحوامل والمرضعات</li>
-              <li>مرضى القلب</li>
-              <li>مرضى السرطان والأورام</li>
-              <li>من يعانون من اضطرابات تخثر الدم</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ FINAL CTA ============ -->
-  <section style="max-width:1180px;margin:0 auto 90px;padding:0 24px;display:flex;justify-content:center;font-family:'IBM Plex Sans Arabic',sans-serif;">
+  <section style="max-width:1180px;margin:0 auto 45px;padding:0 24px;display:flex;justify-content:center;font-family:'IBM Plex Sans Arabic',sans-serif;">
     <div style="width:100%;max-width:412px;">
       <div style="position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(160deg,#4e3d49 0%,#40323c 55%,#3a2d37 100%);padding:26px 22px 22px;box-shadow:0 24px 50px -20px rgba(48,40,46,.55),0 2px 0 rgba(255,255,255,.04) inset;">
 
@@ -426,7 +444,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
           </div>
 
           <!-- CTA -->
-          <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' });" style="position:relative;overflow:hidden;width:100%;cursor:pointer;background:linear-gradient(180deg,#ecd9d2,#e3c9c0);border-radius:18px;padding:17px 18px 15px;display:flex;flex-direction:column;align-items:center;gap:3px;box-shadow:0 10px 24px -8px rgba(210,180,175,.5);">
+          <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('InitiateCheckout', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="position:relative;overflow:hidden;width:100%;cursor:pointer;background:linear-gradient(180deg,#ecd9d2,#e3c9c0);border-radius:18px;padding:17px 18px 15px;display:flex;flex-direction:column;align-items:center;gap:3px;box-shadow:0 10px 24px -8px rgba(210,180,175,.5);">
             <span style="position:absolute;top:0;bottom:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:deproSheen 3.4s ease-in-out infinite;pointer-events:none;"></span>
             <span style="display:inline-flex;align-items:center;gap:9px;font-family:'Cairo',sans-serif;font-weight:800;font-size:18px;color:#322a30;">
               اطلبيه الآن
@@ -457,10 +475,48 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     </div>
   </section>
 
+  <!-- ============ FAQ + WARNINGS ============ -->
+  <section style="max-width:900px;margin:0 auto;padding:45px 24px;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <h2 style="font-size:clamp(22px,2.6vw,28px);font-weight:800;color:#2c2430;margin:0;">قبل ما تطلبين، جاوبنا على أكثر الأسئلة</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div id="faqList" style="display:contents;"></div>
+
+      <div style="background:#fdf3ea;border:1px solid #e8c9a0;border-radius:16px;overflow:hidden;">
+        <button onclick="toggleWarnings()" style="width:100%;background:transparent;border:none;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:inherit;text-align:right;">
+          <span style="font-weight:800;font-size:15px;color:#8a3b2a;">تحذيرات الاستخدام المهمة — اقرئيها قبل الطلب</span>
+          <span id="warningsArrow" style="font-size:18px;color:#8a3b2a;transform:rotate(0deg);transition:transform .25s;flex-shrink:0;">˅</span>
+        </button>
+        <div id="warningsBody" style="display:none;padding:0 22px 22px;gap:30px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:220px;">
+            <div style="font-weight:700;color:#8a3b2a;margin-bottom:10px;">ممنوع استخدامه على:</div>
+            <ul style="margin:0;padding-inline-start:20px;color:#675b64;font-size:14px;line-height:2;">
+              <li>منطقة القلب والصدر</li>
+              <li>الرقبة والغدة الدرقية</li>
+              <li>العمود الفقري والعظام البارزة</li>
+              <li>الوجه</li>
+              <li>الجروح والالتهابات والدوالي</li>
+            </ul>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="font-weight:700;color:#8a3b2a;margin-bottom:10px;">ممنوع استخدامه من قبل:</div>
+            <ul style="margin:0;padding-inline-start:20px;color:#675b64;font-size:14px;line-height:2;">
+              <li>الحوامل والمرضعات</li>
+              <li>مرضى القلب</li>
+              <li>مرضى السرطان والأورام</li>
+              <li>من يعانون من اضطرابات تخثر الدم</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FOOTER ============ -->
   <footer style="border-top:1px solid #ebe0dc;padding:50px 24px 30px;background:#efe6e2;">
     <div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;">
-      <img src="assets/depro-logo.png" alt="Depro" style="width:72px;height:72px;object-fit:contain;">
+      <img src="assets/depro-logo.png" width="400" height="114" alt="Depro" style="width:260px;height:auto;object-fit:contain;">
       <p style="color:#675b64;font-size:14px;margin:0;max-width:420px;">عناية ذكية وسهلة، ونتائج تُبهرك من أول تجربة، هذا وعد ديبرو</p>
 
       <a href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/0000199788" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:6px;">
@@ -481,6 +537,66 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
 <script>
 (function () {
+  // ---- Product image gallery (dots + arrows + swipe) ----
+  document.querySelectorAll('.depro-gallery').forEach(function (root) {
+    var track = root.querySelector('.depro-gallery-track');
+    var slides = root.querySelectorAll('.depro-gallery-slide');
+    var dots = root.querySelectorAll('.depro-gallery-dot');
+    var prevBtn = root.querySelector('.depro-gallery-prev');
+    var nextBtn = root.querySelector('.depro-gallery-next');
+    var count = slides.length;
+    var index = 0;
+
+    function update() {
+      track.style.transform = 'translateX(' + (-index * 100 / count) + '%)';
+      dots.forEach(function (d, i) {
+        d.style.background = i === index ? '#463743' : 'rgba(70,55,66,.3)';
+        d.setAttribute('aria-current', i === index ? 'true' : 'false');
+      });
+    }
+    function goTo(i) {
+      index = (i + count) % count;
+      update();
+    }
+
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { goTo(i); });
+    });
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); });
+
+    // Swipe / drag support
+    var startX = 0, deltaX = 0, dragging = false;
+    function dragStart(x) {
+      startX = x;
+      dragging = true;
+      track.style.transition = 'none';
+    }
+    function dragMove(x) {
+      if (!dragging) return;
+      deltaX = x - startX;
+      var basePct = -index * 100 / count;
+      var dragPct = (deltaX / root.clientWidth) * (100 / count);
+      track.style.transform = 'translateX(' + (basePct + dragPct) + '%)';
+    }
+    function dragEnd() {
+      if (!dragging) return;
+      dragging = false;
+      track.style.transition = '';
+      if (Math.abs(deltaX) > root.clientWidth * 0.15) {
+        goTo(index + (deltaX < 0 ? 1 : -1));
+      } else {
+        update();
+      }
+      deltaX = 0;
+    }
+    track.addEventListener('touchstart', function (e) { dragStart(e.touches[0].clientX); }, { passive: true });
+    track.addEventListener('touchmove', function (e) { dragMove(e.touches[0].clientX); }, { passive: true });
+    track.addEventListener('touchend', dragEnd);
+
+    update();
+  });
+
   // ---- Countdown (4 hours) ----
   var countdownMs = 4 * 3600 * 1000;
   var countdownEls = document.querySelectorAll('.js-countdown');
@@ -576,7 +692,70 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       '</div>' +
     '</div>';
   }).join('');
+
+  // ---- WhatsApp float: reveal only after scrolling past the hero CTA ----
+  var waFloat = document.getElementById('waFloat');
+  function updateWaVisibility() {
+    waFloat.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+  }
+  updateWaVisibility();
+  window.addEventListener('scroll', updateWaVisibility, { passive: true });
 })();
+</script>
+
+<script>
+async function sha256Hash(value) {
+  const data = new TextEncoder().encode(value.trim().toLowerCase());
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function generateEventId() {
+  return Date.now() + "_" + Math.random().toString(36).slice(2, 10);
+}
+
+async function trackEvent(eventName, data, user) {
+  data = data || {};
+  user = user || {};
+  var eventId = generateEventId();
+
+  if (window.ttq) {
+    ttq.track(eventName, {
+      contents: data.contents || [],
+      value: data.value,
+      currency: data.currency || "SAR"
+    }, { event_id: eventId });
+  }
+
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var ttclid = user.ttclid || params.get("ttclid") || undefined;
+
+    await fetch("/api/tiktok-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event: eventName,
+        event_id: eventId,
+        url: window.location.href,
+        user: { email: user.email, phone: user.phone, ttclid: ttclid },
+        properties: {
+          contents: data.contents,
+          value: data.value,
+          currency: data.currency || "SAR"
+        }
+      })
+    });
+  } catch (e) {
+    console.error("tiktok server event failed:", e);
+  }
+}
+
+trackEvent("ViewContent", {
+  contents: [{ content_id: "depro-001", content_type: "product", content_name: "Depro Device" }],
+  value: 189,
+  currency: "SAR"
+});
 </script>
 
 </body>
