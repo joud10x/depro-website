@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 
 const TIKTOK_API_URL = "https://business-api.tiktok.com/open_api/v1.3/event/track/";
-const PIXEL_CODE = process.env.TIKTOK_PIXEL_ID || "D9C68MRC77UD5IE50SQG";
+const PIXEL_CODE = process.env.TIKTOK_PIXEL_ID || "D3QOJOBC77U93U3T4H00";
 
 function sha256(value) {
   return crypto.createHash("sha256").update(value.trim().toLowerCase()).digest("hex");
