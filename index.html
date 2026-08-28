@@ -151,7 +151,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       </div>
 
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px;">
-        <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('InitiateCheckout', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="background:#463743;color:#f4f1e8;font-weight:800;font-size:17px;padding:18px 38px;border-radius:100px;box-shadow:0 10px 30px rgba(70,55,66,.28);animation:pulseRing 2.4s infinite;">
+        <a href="https://depro-sa.com/payment/p1630318598" data-buy="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('ClickButton', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="background:#463743;color:#f4f1e8;font-weight:800;font-size:17px;padding:18px 38px;border-radius:100px;box-shadow:0 10px 30px rgba(70,55,66,.28);animation:pulseRing 2.4s infinite;">
           اطلبيه الآن ←
         </a>
         <div style="display:flex;align-items:center;gap:8px;color:#6f5768;font-weight:700;font-size:14px;">
@@ -233,7 +233,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       </div>
 
       <!-- CTA -->
-      <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('InitiateCheckout', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="width:100%;cursor:pointer;background:#463743;border-radius:100px;padding:16px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 12px 26px -10px rgba(62,74,53,.7);animation:ctaPulse 1.8s ease-in-out infinite;">
+      <a href="https://depro-sa.com/payment/p1630318598" data-buy="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('ClickButton', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="width:100%;cursor:pointer;background:#463743;border-radius:100px;padding:16px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 12px 26px -10px rgba(62,74,53,.7);animation:ctaPulse 1.8s ease-in-out infinite;">
         <span style="font-family:'Cairo',sans-serif;font-weight:800;font-size:16.5px;color:#F7F4EA;">اطلبيه الآن</span>
         <span style="color:#F7F4EA;font-size:15px;">←</span>
       </a>
@@ -444,7 +444,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
           </div>
 
           <!-- CTA -->
-          <a href="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('InitiateCheckout', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="position:relative;overflow:hidden;width:100%;cursor:pointer;background:linear-gradient(180deg,#ecd9d2,#e3c9c0);border-radius:18px;padding:17px 18px 15px;display:flex;flex-direction:column;align-items:center;gap:3px;box-shadow:0 10px 24px -8px rgba(210,180,175,.5);">
+          <a href="https://depro-sa.com/payment/p1630318598" data-buy="https://depro-sa.com/payment/p1630318598" target="_blank" rel="noopener" class="cta-buy" onclick="window.va && window.va('event', { name: 'buy_now_click' }); trackEvent('ClickButton', { contents: [{ content_id: 'depro-001', content_type: 'product', content_name: 'Depro Device' }], value: 189, currency: 'SAR' });" style="position:relative;overflow:hidden;width:100%;cursor:pointer;background:linear-gradient(180deg,#ecd9d2,#e3c9c0);border-radius:18px;padding:17px 18px 15px;display:flex;flex-direction:column;align-items:center;gap:3px;box-shadow:0 10px 24px -8px rgba(210,180,175,.5);">
             <span style="position:absolute;top:0;bottom:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:deproSheen 3.4s ease-in-out infinite;pointer-events:none;"></span>
             <span style="display:inline-flex;align-items:center;gap:9px;font-family:'Cairo',sans-serif;font-weight:800;font-size:18px;color:#322a30;">
               اطلبيه الآن
@@ -702,60 +702,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 })();
 </script>
 
-<script>
-async function sha256Hash(value) {
-  const data = new TextEncoder().encode(value.trim().toLowerCase());
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
-}
-
-function generateEventId() {
-  return Date.now() + "_" + Math.random().toString(36).slice(2, 10);
-}
-
-async function trackEvent(eventName, data, user) {
-  data = data || {};
-  user = user || {};
-  var eventId = generateEventId();
-
-  if (window.ttq) {
-    ttq.track(eventName, {
-      contents: data.contents || [],
-      value: data.value,
-      currency: data.currency || "SAR"
-    }, { event_id: eventId });
-  }
-
-  try {
-    var params = new URLSearchParams(window.location.search);
-    var ttclid = user.ttclid || params.get("ttclid") || undefined;
-
-    await fetch("/api/tiktok-event", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        event: eventName,
-        event_id: eventId,
-        url: window.location.href,
-        user: { email: user.email, phone: user.phone, ttclid: ttclid },
-        properties: {
-          contents: data.contents,
-          value: data.value,
-          currency: data.currency || "SAR"
-        }
-      })
-    });
-  } catch (e) {
-    console.error("tiktok server event failed:", e);
-  }
-}
-
-trackEvent("ViewContent", {
-  contents: [{ content_id: "depro-001", content_type: "product", content_name: "Depro Device" }],
-  value: 189,
-  currency: "SAR"
-});
-</script>
+<script src="/tiktok-tracking.js"></script>
 
 </body>
 </html>
